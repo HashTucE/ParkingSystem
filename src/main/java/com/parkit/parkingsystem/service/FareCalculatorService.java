@@ -16,6 +16,10 @@ public class FareCalculatorService {
         float durationToMinutes = duration.toMinutes();
         float durationToHours = durationToMinutes / 60;
 
+        if (durationToMinutes <= 30) {
+            ticket.setPrice(Fare.FREE_PARKING);
+        } else {
+
         switch (ticket.getParkingSpot().getParkingType()){
             case CAR: {
                 ticket.setPrice(durationToHours * Fare.CAR_RATE_PER_HOUR);
