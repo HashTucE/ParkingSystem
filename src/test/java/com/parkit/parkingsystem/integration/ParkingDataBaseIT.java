@@ -13,6 +13,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -70,29 +74,34 @@ public class ParkingDataBaseIT {
     @Test
     @DisplayName("Check that the fare and the timeout are generated correctly in the DB")
     public void testParkingLotExit() throws Exception {
+        dataBasePrepareService.clearDataBaseEntries();
         testParkingACar();
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
+
+        ticket = ticketDAO.getTicket("ABCDEF");
+        ticket.setInTime(new Date(System.currentTimeMillis() - (60 * 60 * 1000)));
+        ticketDAO.saveTicket(ticket);
+
 
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processExitingVehicle();
+
         ticket = ticketDAO.getTicket("ABCDEF");
-//		ticket.setInTime(new Date(System.currentTimeMillis() - (60 * 60 * 1000)));
+
+        System.out.println("Date: " + ticket.getInTime());
+        System.out.println("Date sortie: " + ticket.getOutTime());
 
 
         // DONE: check that the fare are generated correctly in the database
-        assertEquals(0, ticket.getPrice());
+        assertEquals(1.5, ticket.getPrice());
 
         // DONE: check that out time are populated correctly in the database
         assertNotNull(ticket.getOutTime());
         assertNotEquals(ticket.getInTime(), ticket.getOutTime());
 
 
-//		System.out.println("------------------------------------------");
-//		System.out.println("Date entrée: " + ticket.getInTime());
-//		System.out.println("Date sortie: " + ticket.getOutTime());
-//		System.out.println("Prix: " + ticket.getPrice());
-//		System.out.println("------------------------------------------");
+
 
 
 

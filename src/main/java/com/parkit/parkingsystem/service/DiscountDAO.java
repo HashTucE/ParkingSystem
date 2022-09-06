@@ -18,7 +18,7 @@ public class DiscountDAO {
 
         boolean result = false;
 
-        Ticket ticket = ticketDAO.getTicket(incomingRegistration);
+        Ticket ticket = ticketDAO.oldTicket(incomingRegistration);
 
         if (ticket != null) {
             result = true;
