@@ -21,18 +21,17 @@ public class DataBaseConfig {
     public Connection getConnection() throws ClassNotFoundException, SQLException, IOException {
         logger.info("Create DB connection");
 
-//        Properties properties = new Properties();
-//        properties .load(new FileInputStream(new File("credentials.properties")));
-//
-//        String driver = properties.getProperty("driver");
-//        String url = properties.getProperty("url");
-//        String user = properties.getProperty("username");
-//        String pass = properties.getProperty("password");
+        Properties properties = new Properties();
+        properties .load(new FileInputStream(new File("credentials.properties")));
 
+        String driver = properties.getProperty("driver");
+        String url = properties.getProperty("urlProd");
+        String user = properties.getProperty("username");
+        String pass = properties.getProperty("password");
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName(driver);
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/prod?serverTimezone=UTC", "root", "PzqbYLftTrJVLX-GB3ue7bNj");
+                url, user, pass);
     }
 
     public void closeConnection(Connection con){

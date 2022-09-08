@@ -1,6 +1,5 @@
 package com.parkit.parkingsystem.integration.service;
 
-import com.parkit.parkingsystem.config.DataBaseConfig;
 import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 
 import java.sql.Connection;
