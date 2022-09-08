@@ -26,10 +26,10 @@ public class DiscountDAOTest {
         Ticket ticket = new Ticket();
         DiscountDAO dc = new DiscountDAO(ticketDAOMock);
 
-        when(ticketDAOMock.oldTicket(anyString())).thenReturn(ticket);
+        when(ticketDAOMock.getOldTicket(anyString())).thenReturn(ticket);
 
         assertTrue(dc.discount("ANYREG"));
-        verify(ticketDAOMock, Mockito.times(1)).oldTicket(anyString());
+        verify(ticketDAOMock, Mockito.times(1)).getOldTicket(anyString());
 
     }
 }

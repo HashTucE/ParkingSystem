@@ -9,10 +9,6 @@ public class FareCalculatorService {
 
     private DiscountDAO discountDAO;
 
-    public DiscountDAO getDiscountDAO() {
-        return discountDAO;
-    }
-
     public void setDiscountDAO(DiscountDAO discountDAO) {
         this.discountDAO = discountDAO;
     }

@@ -1,6 +1,7 @@
 package com.parkit.parkingsystem.dao;
 
 import com.parkit.parkingsystem.constants.ParkingType;
+import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 import com.parkit.parkingsystem.integration.service.DataBasePrepareService;
 import com.parkit.parkingsystem.model.ParkingSpot;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,16 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class ParkingSpotDAOTest {
 
     private static ParkingSpotDAO parkingSpotDAO = new ParkingSpotDAO();
-
-    private static DataBasePrepareService dataBasePrepareService;
-
-    @BeforeAll
-    private static void setUp() throws Exception {
-        dataBasePrepareService = new DataBasePrepareService();
-    }
+    private static DataBasePrepareService dataBasePrepareService= new DataBasePrepareService();
+    private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
 
     @BeforeEach
-    private void setUpPerTest() throws Exception {
+    public void setUpPerTest() {
+      parkingSpotDAO.dataBaseConfig = dataBaseTestConfig;
         dataBasePrepareService.clearDataBaseEntries();
     }
 
@@ -52,9 +49,9 @@ class ParkingSpotDAOTest {
         parkingSpotDAO.updateParking(ps3);
 
 
-        int result = parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR);
+        int nextAvailableSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR);
 
-        assertEquals(0, result);
+        assertEquals(0, nextAvailableSlot);
     }
 
     @Test

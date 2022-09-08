@@ -69,7 +69,7 @@ public class TicketDAO {
         }
     }
 
-    public Ticket oldTicket(String vehicleRegNumber) {
+    public Ticket getOldTicket(String vehicleRegNumber) {
         Connection con = null;
         Ticket ticket = null;
         try {

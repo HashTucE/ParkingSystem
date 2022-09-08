@@ -1,5 +1,6 @@
 package com.parkit.parkingsystem.integration.service;
 
+import com.parkit.parkingsystem.config.DataBaseConfig;
 import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 
 import java.sql.Connection;
@@ -13,6 +14,7 @@ public class DataBasePrepareService {
         try{
             connection = dataBaseTestConfig.getConnection();
 
+
             //set parking entries to available
             connection.prepareStatement("update parking set available = true").execute();
 
@@ -23,8 +25,7 @@ public class DataBasePrepareService {
             e.printStackTrace();
         }finally {
             dataBaseTestConfig.closeConnection(connection);
+
         }
     }
-
-
 }
