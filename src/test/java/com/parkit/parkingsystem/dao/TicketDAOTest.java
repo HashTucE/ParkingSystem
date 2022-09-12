@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.sql.SQLException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,26 +17,24 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class TicketDAOTest {
 
-    private String reg = "ANYREG";
+    private static final String REG = "ANYREG";
 
-    private static DataBaseTestConfig dataBaseTestConfig;
+    private final static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
 
-    private static TicketDAO ticketDAO;
+    private final static TicketDAO ticketDAO = new TicketDAO();
 
     @BeforeAll
-    private static void setUp() throws Exception {
-        dataBaseTestConfig = new DataBaseTestConfig();
-        ticketDAO = new TicketDAO();
+    public static void setUp() {
         ticketDAO.dataBaseConfig = dataBaseTestConfig;
     }
 
     @Test
     @DisplayName("Should return false when the ticket is saved successfully")
-    void saveTicketWhenTicketIsSavedSuccessfullyThenReturnFalse() throws SQLException {
+    void saveTicketWhenTicketIsSavedSuccessfullyThenReturnFalse() {
         Ticket ticket = new Ticket();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
         ticket.setParkingSpot(parkingSpot);
-        ticket.setVehicleRegNumber(reg);
+        ticket.setVehicleRegNumber(REG);
         ticket.setPrice(10);
         ticket.setInTime(new Date());
 
@@ -47,11 +44,10 @@ class TicketDAOTest {
 
     @Test
     @DisplayName("Should assert not null when a ticket already exist")
-    void getTicketWhenTicketAlreadyExistThenParametersNotNull() throws SQLException {
-        Ticket result = ticketDAO.getTicket(reg);
+    void getTicketWhenTicketAlreadyExistThenParametersNotNull() {
+        Ticket result = ticketDAO.getTicket(REG);
 
         assertNotNull(result);
-        assertNotNull(result.getId());
         assertNotNull(result.getParkingSpot());
         assertNotNull(result.getInTime());
 
@@ -59,12 +55,12 @@ class TicketDAOTest {
 
     @Test
     @DisplayName("Should update the ticket when the price change")
-    void updateTicketWhenPriceChange() throws SQLException {
-        Ticket result = ticketDAO.getTicket(reg);
+    void updateTicketWhenPriceChange() {
+        Ticket result = ticketDAO.getTicket(REG);
         result.setPrice(10.0);
         result.setOutTime(new Date());
         ticketDAO.updateTicket(result);
-        result = ticketDAO.getTicket(reg);
+        result = ticketDAO.getTicket(REG);
 
         assertEquals(10.0, result.getPrice());
     }

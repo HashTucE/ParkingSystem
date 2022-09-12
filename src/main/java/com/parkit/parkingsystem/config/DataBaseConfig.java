@@ -14,10 +14,6 @@ public class DataBaseConfig {
 
     private static final Logger logger = LogManager.getLogger("DataBaseConfig");
 
-
-
-
-
     public Connection getConnection() throws ClassNotFoundException, SQLException, IOException {
         logger.info("Create DB connection");
 
@@ -33,6 +29,7 @@ public class DataBaseConfig {
         return DriverManager.getConnection(
                 url, user, pass);
     }
+
 
     public void closeConnection(Connection con){
         if(con!=null){

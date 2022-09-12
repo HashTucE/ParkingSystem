@@ -1,7 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.dao.ParkingSpotDAOTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in com.parkit.parkingsystem.dao.ParkingSpotDAOTest
-com.parkit.parkingsystem.dao.ParkingSpotDAOTest  Time elapsed: 0 s  <<< ERROR!
-org.junit.platform.commons.JUnitException: @BeforeAll method 'private static void com.parkit.parkingsystem.dao.ParkingSpotDAOTest.setUp() throws java.lang.Exception' must not be private.
-
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.258 s - in com.parkit.parkingsystem.dao.ParkingSpotDAOTest

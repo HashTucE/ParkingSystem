@@ -22,7 +22,7 @@ public class DiscountDAOTest {
 
     @Test
     @DisplayName("Discount should return true when the ticket already exist")
-    void discountWhenTicketAlreadyExistThenReturnTrue() throws Exception {
+    void discountWhenTicketAlreadyExistThenReturnTrue() {
         Ticket ticket = new Ticket();
         DiscountDAO dc = new DiscountDAO(ticketDAOMock);
 

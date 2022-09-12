@@ -13,12 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class ParkingSpotDAOTest {
 
     private static ParkingSpotDAO parkingSpotDAO = new ParkingSpotDAO();
-    private static DataBasePrepareService dataBasePrepareService= new DataBasePrepareService();
+    private static DataBasePrepareService dataBasePrepareService = new DataBasePrepareService();
     private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
 
     @BeforeEach
     public void setUpPerTest() {
-      parkingSpotDAO.dataBaseConfig = dataBaseTestConfig;
+        parkingSpotDAO.dataBaseConfig = dataBaseTestConfig;
         dataBasePrepareService.clearDataBaseEntries();
     }
 
@@ -39,7 +39,6 @@ class ParkingSpotDAOTest {
     @DisplayName("Should return 0 when there is no car slot available")
     void getNextAvailableSlotWhenThereIsNoSlotAvailable() {
 
-        parkingSpotDAO = new ParkingSpotDAO();
         ParkingSpot ps1 = new ParkingSpot(1, ParkingType.CAR, false);
         parkingSpotDAO.updateParking(ps1);
         ParkingSpot ps2 = new ParkingSpot(2, ParkingType.CAR, false);
@@ -48,9 +47,9 @@ class ParkingSpotDAOTest {
         parkingSpotDAO.updateParking(ps3);
 
 
-        int nextAvailableSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR);
+        int result = parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR);
 
-        assertEquals(0, nextAvailableSlot);
+        assertEquals(0, result);
     }
 
     @Test

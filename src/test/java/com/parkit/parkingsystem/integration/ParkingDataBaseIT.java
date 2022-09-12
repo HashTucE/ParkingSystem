@@ -21,12 +21,12 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ParkingDataBaseIT {
 
-    private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
-    private static ParkingSpotDAO parkingSpotDAO = new ParkingSpotDAO();
-    private static TicketDAO ticketDAO = new TicketDAO();
+    private static final DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
+    private static final ParkingSpotDAO parkingSpotDAO = new ParkingSpotDAO();
+    private static final TicketDAO ticketDAO = new TicketDAO();
 
     private Ticket ticket = new Ticket();
-    private static DataBasePrepareService dataBasePrepareService = new DataBasePrepareService();
+    private static final DataBasePrepareService dataBasePrepareService = new DataBasePrepareService();
 
     @Mock
     private static InputReaderUtil inputReaderUtil;
@@ -41,6 +41,10 @@ public class ParkingDataBaseIT {
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
     }
 
+    @AfterAll
+    public static void clearUp() {
+        dataBasePrepareService.clearDataBaseEntries();
+    }
 
     @Test
     @DisplayName("Check that a ticket is saved in DB and the parking table is updated")

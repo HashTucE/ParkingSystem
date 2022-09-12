@@ -30,6 +30,7 @@ public class FareCalculatorService {
 
         if (durationToMinutes <= 30) {
             ticket.setPrice(Fare.FREE_PARKING);
+            System.out.println("Free parking under 30 minutes!");
         } else {
 
             switch (ticket.getParkingSpot().getParkingType()) {
@@ -46,8 +47,10 @@ public class FareCalculatorService {
             }
             result = discountDAO.discount(ticket.getVehicleRegNumber());
 
-            if (result)
+            if (result) {
                 ticket.setPrice(ticket.getPrice() * 0.95);
+                System.out.println("Welcome back! As a recurring user of our parking lot, you'll benefit from a 5% discount.");
+            }
             }
         }
     }
