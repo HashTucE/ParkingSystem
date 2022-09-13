@@ -16,7 +16,7 @@ public class FareCalculatorService {
     public FareCalculatorService() {
         this.discountDAO = new DiscountDAO();
     }
-    public void calculateFare(Ticket ticket) throws Exception {
+    public void calculateFare(Ticket ticket) {
 
         boolean result;
 
@@ -51,6 +51,6 @@ public class FareCalculatorService {
                 ticket.setPrice(ticket.getPrice() * 0.95);
                 System.out.println("Welcome back! As a recurring user of our parking lot, you'll benefit from a 5% discount.");
             }
-            }
         }
     }
+}

@@ -18,7 +18,9 @@ public class DataBaseConfig {
         logger.info("Create DB connection");
 
         Properties properties = new Properties();
-        properties .load(new FileInputStream(new File("credentials.properties")));
+        FileInputStream fis = new FileInputStream("credentials.properties");
+        properties .load(fis);
+        fis.close();
 
         String driver = properties.getProperty("driver");
         String url = properties.getProperty("urlProd");

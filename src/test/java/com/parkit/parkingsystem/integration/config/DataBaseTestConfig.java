@@ -6,8 +6,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.*;
 import java.util.Properties;
 
@@ -19,10 +19,12 @@ public class DataBaseTestConfig extends DataBaseConfig {
         logger.info("Create DB connection");
 
         Properties properties = new Properties();
-        properties .load(new FileInputStream(new File("credentials.properties")));
+        FileInputStream fis = new FileInputStream("credentials.properties");
+        properties .load(fis);
+        fis.close();
 
         String driver = properties.getProperty("driver");
-        String url = properties.getProperty("urlProd");
+        String url = properties.getProperty("urlTest");
         String user = properties.getProperty("username");
         String pass = properties.getProperty("password");
 
