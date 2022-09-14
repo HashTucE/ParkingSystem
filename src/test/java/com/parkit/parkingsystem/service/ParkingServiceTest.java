@@ -37,8 +37,10 @@ public class ParkingServiceTest {
     void getNextParkingNumberIfAvailableWhenThereIsAnAvailableSlot() {
         when(inputReaderUtilMock.readSelection()).thenReturn(1);
         when(parkingSpotDAOMock.getNextAvailableSlot(any(ParkingType.class))).thenReturn(1);
+
         parkingService = new ParkingService(inputReaderUtilMock, parkingSpotDAOMock, ticketDAOMock);
         ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
+
         assertNotNull(parkingSpot);
         assertEquals(1, parkingSpot.getId());
     }

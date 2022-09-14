@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.*;
@@ -18,19 +19,27 @@ public class DataBaseTestConfig extends DataBaseConfig {
     public Connection getConnection() throws ClassNotFoundException, IOException, SQLException {
         logger.info("Create DB connection");
 
-        Properties properties = new Properties();
-        FileInputStream fis = new FileInputStream("credentials.properties");
-        properties .load(fis);
-        fis.close();
+        try {
+            Properties properties = new Properties();
+            FileInputStream fis = new FileInputStream("credentials.properties");
+            properties.load(fis);
 
-        String driver = properties.getProperty("driver");
-        String url = properties.getProperty("urlTest");
-        String user = properties.getProperty("username");
-        String pass = properties.getProperty("password");
+            String driver = properties.getProperty("driver");
+            String url = properties.getProperty("urlTest");
+            String user = properties.getProperty("username");
+            String pass = properties.getProperty("password");
 
-        Class.forName(driver);
-        return DriverManager.getConnection(
-                url, user, pass);
+            Class.forName(driver);
+            fis.close();
+
+            return DriverManager.getConnection(
+                    url, user, pass);
+
+
+        } catch (FileNotFoundException e) {
+        }
+
+        return null;
     }
 
     public void closeConnection(Connection con){

@@ -17,19 +17,27 @@ public class DataBaseConfig {
     public Connection getConnection() throws ClassNotFoundException, SQLException, IOException {
         logger.info("Create DB connection");
 
-        Properties properties = new Properties();
-        FileInputStream fis = new FileInputStream("credentials.properties");
-        properties .load(fis);
-        fis.close();
+        try {
+            Properties properties = new Properties();
+            FileInputStream fis = new FileInputStream("credentials.properties");
+            properties.load(fis);
 
-        String driver = properties.getProperty("driver");
-        String url = properties.getProperty("urlProd");
-        String user = properties.getProperty("username");
-        String pass = properties.getProperty("password");
+            String driver = properties.getProperty("driver");
+            String url = properties.getProperty("urlProd");
+            String user = properties.getProperty("username");
+            String pass = properties.getProperty("password");
 
-        Class.forName(driver);
-        return DriverManager.getConnection(
-                url, user, pass);
+            Class.forName(driver);
+            fis.close();
+
+            return DriverManager.getConnection(
+                    url, user, pass);
+
+
+        } catch (FileNotFoundException e) {
+        }
+
+        return null;
     }
 
 
