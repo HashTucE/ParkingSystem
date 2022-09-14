@@ -1,0 +1,8 @@
+/Users/hashtuce/Library/Mobile Documents/com~apple~CloudDocs/Projets/Projet 4/git/parkingsystem/src/test/java/com/parkit/parkingsystem/dao/DiscountDAOTest.java
+/Users/hashtuce/Library/Mobile Documents/com~apple~CloudDocs/Projets/Projet 4/git/parkingsystem/src/test/java/com/parkit/parkingsystem/service/ParkingServiceTest.java
+/Users/hashtuce/Library/Mobile Documents/com~apple~CloudDocs/Projets/Projet 4/git/parkingsystem/src/test/java/com/parkit/parkingsystem/integration/config/DataBaseTestConfig.java
+/Users/hashtuce/Library/Mobile Documents/com~apple~CloudDocs/Projets/Projet 4/git/parkingsystem/src/test/java/com/parkit/parkingsystem/integration/ParkingDataBaseIT.java
+/Users/hashtuce/Library/Mobile Documents/com~apple~CloudDocs/Projets/Projet 4/git/parkingsystem/src/test/java/com/parkit/parkingsystem/integration/service/DataBasePrepareService.java
+/Users/hashtuce/Library/Mobile Documents/com~apple~CloudDocs/Projets/Projet 4/git/parkingsystem/src/test/java/com/parkit/parkingsystem/dao/TicketDAOTest.java
+/Users/hashtuce/Library/Mobile Documents/com~apple~CloudDocs/Projets/Projet 4/git/parkingsystem/src/test/java/com/parkit/parkingsystem/dao/ParkingSpotDAOTest.java
+/Users/hashtuce/Library/Mobile Documents/com~apple~CloudDocs/Projets/Projet 4/git/parkingsystem/src/test/java/com/parkit/parkingsystem/service/FareCalculatorServiceTest.java
