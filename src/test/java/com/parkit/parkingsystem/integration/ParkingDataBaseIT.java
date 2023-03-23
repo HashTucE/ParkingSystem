@@ -24,7 +24,6 @@ public class ParkingDataBaseIT {
     private static final DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
     private static final ParkingSpotDAO parkingSpotDAO = new ParkingSpotDAO();
     private static final TicketDAO ticketDAO = new TicketDAO();
-
     private Ticket ticket = new Ticket();
     private static final DataBasePrepareService dataBasePrepareService = new DataBasePrepareService();
 
