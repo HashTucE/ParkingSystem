@@ -8,33 +8,43 @@
 A command line app for managing the parking system. 
 This app uses Java to run and stores the data in Mysql DB.
 
+
 # Prerequisites
 
-- Java 1.8
-- Maven 3.6.2
-- Mysql 8.0.17
+- [Java](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) 1.8
+- [Maven](https://maven.apache.org/install.html) 3.6.2
+- [MySql](https://dev.mysql.com/downloads/mysql/) 8.0.17
 
-# Getting Started
+```
+After installing MySQL, you will be asked to configure the password for the default `root` account.
+This code uses the default root account to connect and the password is set as `pass`. 
+If you add another user/credentials make sure to change the same in the `credentials.properties` file.
+```
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Installing
+# Prepare the database
 
-A step by step series of examples that tell you how to get a development env running:
-1. Install [Java](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
-2. Install [Maven](https://maven.apache.org/install.html)
-3. Install [MySql](https://dev.mysql.com/downloads/mysql/)
+- Open a command prompt to start MySQL server :
+  - Enter this command to be connected as `root` account : 
+    ```
+    mysql -u root -p
+    ```
+  - Type your password to start the server
+  
+- Copy/paste SQL scripts :
+  - Enter this [script](https://github.com/HashTucE/ParkingSystem/blob/main/resources/Data.sql) to create databases `prod` and `test`
+  
+  
+# Run the application
 
-After downloading the mysql 8 installer and installing it, you will be asked to configure the password for the default `root` account.
-This code uses the default root account to connect and the password can be set as `rootroot`. If you add another user/credentials make sure to change the same in the code base.
-
-### Running App
-
-Post installation of MySQL, Java and Maven, you will have to set up the tables and data in the data base.
-For this, please run the sql commands present in the `Data.sql` file under the `resources` folder in the code base.
-
-Finally, you will be ready to import the code into an IDE of your choice and run the App.java to launch the application.
-
+There are 2 possibilities : 
+- Open the project with your IDE and run the main method of `App` class.
+- Or open a prompt :
+    - move to the root of the project you cloned on your local machine
+    - enter `mvn clean install` command to compile, test, package and install properly the project
+    - enter `mvn exec:java`command to start the application
+    
+    
 # Goal
 
 As part of this project, I achieved the following objectives :
